@@ -113,7 +113,7 @@
     navigator.mediaDevices.enumerateDevices()
         .then(gotDevices => {
             for (var key in gotDevices) {
-                if (gotDevices[key]['label'] === "camera 1, facing back") {
+                if (gotDevices[key]['label'].includes("back")) {
                     deviceID = gotDevices[key]['deviceId'];
                 }
 

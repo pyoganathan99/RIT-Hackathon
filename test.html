@@ -11,7 +11,7 @@
             document.getElementById('a').innerHTML=(JSON.stringify(gotDevices));
 
             for (var key in gotDevices) {
-                if (gotDevices[key]['label'] === "camera 1, facing back") {
+                if (gotDevices[key]['label'].includes("back")) {
                     deviceID = gotDevices[key]['deviceId'];
                 }
 
