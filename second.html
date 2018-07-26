@@ -112,20 +112,19 @@
 
     navigator.mediaDevices.enumerateDevices()
         .then(gotDevices => {
-            for(var key in gotDevices){
-                var device = gotDevices;
-                if(device.kind=="videoinput")
-                {
-                    deviceID=device.deviceID;
-                    break;
+            for (var key in gotDevices) {
+                if (gotDevices[key]['kind'] === "videoinput") {
+                    deviceID = gotDevices[key]['deviceId'];
                 }
-                
+
             }
+            navigator.mediaDevices.getUserMedia(constraints).
+                then(handleSuccess).catch(handleError);
         })
 
     const constraints = {
         video: {
-            deviceId: {exact: deviceID}
+            deviceId: { exact: deviceID }
         }
     };
 
@@ -222,7 +221,7 @@
                     console.log(word);
 
                     document.getElementById("container").innerHTML +=
-                        "<div class='card horizontal' style='background:#ffffffd2'>" +
+                        "<a href='http://www.google.com/search?q=" + word.trim().replace(/(?:\r\n|\r|\n)/g, "%20") + "' class='card horizontal' style='background:#ffffffd2'>" +
                         "<div class='card-stacked'>" +
                         "<div class='card-content'>" +
                         "<p><i class='blue-text material-icons'>search</i>" +
@@ -230,7 +229,7 @@
                         "</p>" +
                         "</div>" +
                         "</div>" +
-                        "</div>";
+                        "</a>";
 
                 }
 
@@ -322,8 +321,7 @@
         console.log(err);
     }
 
-    navigator.mediaDevices.getUserMedia(constraints).
-        then(handleSuccess).catch(handleError);
+
 
 </script>
 
