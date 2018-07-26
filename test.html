@@ -1,0 +1,11 @@
+<html>
+
+<body>
+    <div id="a"></div>
+</body>
+<script>
+    navigator.mediaDevices.enumerateDevices()
+        .then(a => document.getElementById('a').innerHTML=JSON.stringify(a))
+</script>
+
+</html>
