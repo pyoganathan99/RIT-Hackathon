@@ -4,8 +4,20 @@
     <div id="a"></div>
 </body>
 <script>
+    var deviceID="no";
     navigator.mediaDevices.enumerateDevices()
-        .then(a => document.getElementById('a').innerHTML=JSON.stringify(a))
+        .then(gotDevices => {
+
+            document.getElementById('a').innerHTML=(JSON.stringify(gotDevices));
+
+            for (var key in gotDevices) {
+                if (gotDevices[key]['label'] === "camera 1, facing back") {
+                    deviceID = gotDevices[key]['deviceId'];
+                }
+
+            }
+            document.getElementById('a').innerHTML+=(deviceID);
+        })
 </script>
 
 </html>
