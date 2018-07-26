@@ -42,6 +42,10 @@
         .card-content {
             padding: 24px !important;
         }
+
+        .material-icons {
+            vertical-align: middle;
+        }
     </style>
 
 </head>
@@ -111,7 +115,11 @@
             for(var key in gotDevices){
                 var device = gotDevices;
                 if(device.kind=="videoinput")
+                {
                     deviceID=device.deviceID;
+                    break;
+                }
+                
             }
         })
 
@@ -217,12 +225,9 @@
                         "<div class='card horizontal' style='background:#ffffffd2'>" +
                         "<div class='card-stacked'>" +
                         "<div class='card-content'>" +
-                        "<p>" +
-                        "<b>" + word + "</b>" +
+                        "<p><i class='blue-text material-icons'>search</i>" +
+                        "<span style='padding-left:12px'>" + word + "</span>" +
                         "</p>" +
-                        "</div>" +
-                        "<div class='card-action'>" +
-                        "<a href='http://www.google.com/search?q=' " + word + " class='blue-text'>Web Search</a>" +
                         "</div>" +
                         "</div>" +
                         "</div>";
